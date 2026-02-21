@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        // Output code version
+        "target": "es2020",
+        "module": "nodenext",
+        
+        // Type Checking
+        "strict": true,
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "strictNullChecks": true,
+
+        // Module Resolution
+        "moduleResolution": "nodenext",
+        "esModuleInterop": true,         // CommonJS/ES module interop
+        "resolveJsonModule": true,  
+    }
+}
