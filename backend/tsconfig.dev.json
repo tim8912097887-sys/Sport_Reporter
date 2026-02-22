@@ -1,6 +1,18 @@
 {
     "extends": "./tsconfig.base.json",
     "compilerOptions": {
+        // Path Mapping
+        "baseUrl": ".",                // Base directory for resolving non-relative module names
+        "paths": {
+            "@/*": ["src/*"],
+            "@utilities/*": ["src/utilities/*"],
+            "@configs/*": ["src/configs/*"],
+            "@db/*": ["src/db/*"],
+            "@routes/*": ["src/routes/*"],
+            "@custom/*": ["src/custom/*"],
+            "@middleware/*": ["src/middleware/*"],
+            "@schema/*": ["src/schema/*"],
+        },
         // File Location
         "rootDir": "src",
         "outDir": "dist",
