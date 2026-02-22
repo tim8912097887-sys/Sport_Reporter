@@ -4,13 +4,14 @@
         "baseUrl": ".",                // Base directory for resolving non-relative module names
         "paths": {
             "@/*": ["src/*"],
-            "@utilities/*": ["src/utilities/*"],
+            "@utils/*": ["src/utils/*"],
             "@configs/*": ["src/configs/*"],
             "@db/*": ["src/db/*"],
             "@routes/*": ["src/routes/*"],
-            "@custom/*": ["src/custom/*"],
+            "@shared/*": ["src/shared/*"],
             "@middleware/*": ["src/middleware/*"],
-            "@schema/*": ["src/schema/*"],
+            "@validations/*": ["src/validations/*"],
+            "@controllers/*": ["src/controllers/*"]
         },
     }
 }

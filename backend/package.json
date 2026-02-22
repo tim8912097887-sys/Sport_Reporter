@@ -5,6 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "dev": "tsx watch --env-file=.env.dev src/server.ts",
     "build": "tsc",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate"
@@ -14,15 +15,21 @@
   "license": "ISC",
   "packageManager": "pnpm@10.26.1",
   "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/morgan": "^1.9.10",
     "@types/node": "^25.3.0",
     "@types/pg": "^8.16.0",
     "drizzle-kit": "^0.31.9",
+    "tsx": "^4.21.0",
     "typescript": "^5.9.3"
   },
   "dependencies": {
     "dotenv": "^17.3.1",
     "drizzle-orm": "^0.45.1",
+    "express": "^5.2.1",
+    "morgan": "^1.10.1",
     "pg": "^8.18.0",
+    "winston": "^3.19.0",
     "zod": "^4.3.6"
   }
 }
