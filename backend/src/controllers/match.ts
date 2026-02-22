@@ -37,7 +37,7 @@ export const createMatch = asyncHandler(async (req, res) => {
         awayScore: awayScore ?? 0,
         status: getMatchStatus(new Date(startTime), new Date(endTime))
     }).returning();
-
+    if(req.app.locals.broadcastCreatedMatch) req.app.locals.broadcastCreatedMatch(event);
     res.status(201).json(responseEnvelope({
         state: "success",
         data: event

@@ -27,7 +27,9 @@ const envSchema = z.object({
   .regex(
     /^postgresql?:\/\/[a-zA-Z0-9_.-]+(:.+)?@([a-zA-Z0-9.-]+|\[[a-fA-Z0-9:]+\])(:[0-9]+)?\/[a-zA-Z0-9_.-]+$/,
     "Invalid PostgreSQL connection string format"
-  )
+  ),
+  // HOST Validation
+  HOST: z.string().default('0.0.0.0'),
   
 });
 

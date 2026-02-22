@@ -1,4 +1,4 @@
-import { app } from "@/app.js";
+import { server } from "@/app.js";
 import { gracefulShutdown } from "@utils/shutdown.js";
 import { env } from "@configs/env.js";
 import { logger } from "@utils/logger.js";
@@ -9,8 +9,10 @@ import { db } from "./db/db.js";
     logger.info("Checking database connection...");
     await db.execute("SELECT 1"); 
     logger.info("Database connection established.");
-      const server = app.listen(env.PORT, () => {
-        logger.info(`Server is running on port ${env.PORT}`);
+      server.listen(env.PORT,env.HOST, () => {
+        const baseUrl = env.HOST==="0.0.0.0"?`http://localhost:${env.PORT}`:`http://${env.HOST}:${env.PORT}`
+        logger.info(`Server is running on ${baseUrl}`);
+        logger.info(`WebSocket endpoint available at ws://${env.HOST}:${env.PORT}/ws`);
       });
       const shutdownHandler = gracefulShutdown({ server });
     // Handle termination signals and unexpected errors
