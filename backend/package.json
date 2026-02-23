@@ -9,7 +9,8 @@
     "build": "tsc",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
-    "ws:client": "wscat -c ws://localhost:3001/ws"
+    "test:ws-human": "wscat -c ws://localhost:3001/ws -H \"User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0.0\"",
+    "test:ws-bot": "wscat -c ws://localhost:3001/ws"
   },
   "keywords": [],
   "author": "",
@@ -26,6 +27,8 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
+    "@arcjet/inspect": "^1.1.0",
+    "@arcjet/node": "^1.1.0",
     "dotenv": "^17.3.1",
     "drizzle-orm": "^0.45.1",
     "express": "^5.2.1",
