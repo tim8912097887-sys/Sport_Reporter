@@ -1,3 +1,4 @@
+import { env } from "@/configs/env.js";
 import { db } from "@/db/db.js";
 import { matches } from "@/db/schema.js";
 import { BadRequestError } from "@/shared/error/badRequest.js"
@@ -7,13 +8,11 @@ import { responseEnvelope } from "@/utils/responseEnvelope.js";
 import { listMatchesQuerySchema } from "@/validations/match.js";
 import { desc } from "drizzle-orm";
 
-const MAX_LIMIT = 100;
-
 export const getMatches = asyncHandler(async (req, res) => {
     const parsedQuery = listMatchesQuerySchema.safeParse(req.query);
     if (!parsedQuery.success) throw new BadRequestError("Invalid query parameters: " + parsedQuery.error.issues.map(e => e.message).join(", "));
     
-    const limit = Math.min(parsedQuery.data.limit ?? 50, MAX_LIMIT); 
+    const limit = Math.min(parsedQuery.data.limit ?? 50,env.MAX_LIMIT); 
     const allMatches = await db
                              .select()
                              .from(matches)

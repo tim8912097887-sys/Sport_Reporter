@@ -1,11 +1,11 @@
 import { CreateMatchType } from "@validations/match.ts";
-
-type User = CreateUserType | LoginUserType;
+import { CreateCommentaryType} from "@validations/commentary.ts";
 
 declare global {
     namespace Express {
        interface Request {
-          match?: createMatchSchema
+          match?: CreateMatchType
+          commentary?: CreateCommentaryType
        }        
     }
 }
