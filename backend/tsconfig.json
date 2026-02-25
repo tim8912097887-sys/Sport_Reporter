@@ -1,7 +1,8 @@
 {
     "extends": "./tsconfig.dev.json",
     "compilerOptions": {
-        "baseUrl": ".",                // Base directory for resolving non-relative module names
+        "baseUrl": ".",         // Base directory for resolving non-relative module names
+        "rootDir": ".",
         "paths": {
             "@/*": ["src/*"],
             "@utils/*": ["src/utils/*"],
@@ -12,6 +13,10 @@
             "@middleware/*": ["src/middleware/*"],
             "@validations/*": ["src/validations/*"],
             "@controllers/*": ["src/controllers/*"]
-        },
-    }
+        }
+    },
+    "include": ["src/**/*", "test/**/*"],
+    "exclude": ["node_modules",
+    "dist",
+    "coverage"]
 }

@@ -1,8 +1,8 @@
-import { env } from "@/configs/env.js";
-import { db } from "@/db/db.js";
-import { NotFoundError } from "@/shared/error/notFound.js";
-import { logger } from "@/utils/logger.js";
-import { listCommentaryQuerySchema } from "@/validations/commentary.js";
+import { env } from "@configs/env.js";
+import { db } from "@db/db.js";
+import { NotFoundError } from "@shared/error/notFound.js";
+import { logger } from "@utils/logger.js";
+import { listCommentaryQuerySchema } from "@validations/commentary.js";
 import { commentary, matches } from "@db/schema.js";
 import { BadRequestError } from "@shared/error/badRequest.js"
 import { asyncHandler } from "@utils/asyncHandler.js"
@@ -45,7 +45,7 @@ export const getComment = asyncHandler(async (req, res) => {
                              .select()
                              .from(commentary)
                              .where(eq(commentary.matchId,matchId))
-                             .orderBy((desc(matches.createAt)))
+                             .orderBy((desc(commentary.createAt)))
                              .limit(limit);
     res.status(200).json(responseEnvelope({
         state: "success",

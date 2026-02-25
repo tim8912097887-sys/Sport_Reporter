@@ -3,7 +3,12 @@ import { env } from '@configs/env.js';
 
 
 export const listCommentaryQuerySchema = z.object({
-    limit: z.coerce.number().int().positive().max(env.MAX_LIMIT).optional()
+    limit: z.coerce
+            .number("Limit should be a number")
+            .int()
+            .positive("Limit must be greater than 0")
+            .max(env.MAX_LIMIT, "Maximum limit is 100")
+            .optional(),
 }) 
 /**
  * Zod schema for the 'commentary' table.

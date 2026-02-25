@@ -8,7 +8,7 @@ export const MATCH_STATUS = {
 
 export const listMatchesQuerySchema = z.object({
     limit: z.coerce
-        .number()
+        .number("Limit should be a number")
         .int()
         .positive("Limit must be greater than 0")
         .max(100, "Maximum limit is 100")
@@ -25,18 +25,18 @@ export const matchIdParamSchema = z.object({
 const isoDateString = z.iso.datetime({ message: "Invalid ISO date format" });
 
 export const createMatchSchema = z.object({
-    sport: z.string().min(1, "Sport name is required"),
-    homeTeam: z.string().min(1, "Home team name is required"),
-    awayTeam: z.string().min(1, "Away team name is required"),
+    sport: z.string("sport should be string").min(1, "Sport name is required"),
+    homeTeam: z.string("homeTeam should be string").min(1, "Home team name is required"),
+    awayTeam: z.string("awayTeam should be string").min(1, "Away team name is required"),
     startTime: isoDateString,
     endTime: isoDateString,
     homeScore: z.coerce
-        .number()
+        .number("homeScore should be number")
         .int()
         .nonnegative("Score cannot be negative")
         .optional(),
     awayScore: z.coerce
-        .number()
+        .number("awayScore should be number")
         .int()
         .nonnegative("Score cannot be negative")
         .optional(),
